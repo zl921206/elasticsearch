@@ -1,0 +1,51 @@
+base-url: 192.168.10.62
+elasticsearch:
+  host:
+    name: 192.168.10.71
+    port: 9200
+
+dubbo:
+  version: 1.0.0
+  application:
+    #dubbo提供者的别名，只是个标识
+    id: elasticsearch
+    name: elasticsearch
+  protocol:
+    id: dubbo
+    #dubbo协议
+    name: dubbo
+    #duboo端口号
+    port: 20881
+  registry:
+    id: my-registry
+    #zk地址
+    address: zookeeper://zk61:2181?backup=zk67:2181,zk57:2181
+    # dubbo服务发布者实现类注解@service所在的包
+  scan:
+    basePackages: com.kamluen.elasticsearch.service
+
+ip:
+#  path: https://file.kamluen.com
+  path: https://kloss.kamluen.com/SERVICE/UPLOAD
+
+jedis:
+  pool:
+    host: r-bp1a540b1a25ef74.redis.rds.aliyuncs.com
+    port: 6379
+    password: Kamluen2018Redis01
+    config:
+      maxTotal: 1024
+      maxIdle: 200
+      maxWaitMillis : 100
+
+apache:
+  rocketmq:
+    producer:
+      producerTopic: flink-searchTrend-source
+      producerGroup: flink
+      topicTags: text
+    nameServerAddr: 192.168.10.67:9876
+  kafka:
+    producer:
+      producerTopic: flink-searchTrend-source
+    serverAddr: 192.168.10.67:19092

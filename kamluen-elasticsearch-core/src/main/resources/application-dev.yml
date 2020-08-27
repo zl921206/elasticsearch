@@ -1,0 +1,55 @@
+base-url: 192.168.10.250
+elasticsearch:
+  host:
+#    name: 47.98.113.4
+    # 为了节省资源，开发环境es服务应用连接测试环境 192.168.10.227
+    name: 192.168.10.227
+    port: 9200
+
+ip:
+#  path: http://192.168.10.250:8000
+  path: https://kltest.kamluen.com/SERVICE/UPLOADE
+
+dubbo:
+  version: 1.0.0
+  application:
+    #dubbo提供者的别名，只是个标识
+    id: elasticsearch
+    name: elasticsearch
+  protocol:
+    id: dubbo
+    #dubbo协议
+    name: dubbo
+    #duboo端口号
+    port: 20881
+  registry:
+    id: my-registry
+    #zk地址
+    address: zookeeper://192.168.10.250:2181
+    # dubbo服务发布者实现类注解@service所在的包
+  scan:
+    basePackages: com.kamluen.elasticsearch.service
+
+jedis:
+  pool:
+    host: 192.168.10.250
+    port: 6385
+    password: 123456
+    config:
+      maxTotal: 1024
+      maxIdle: 200
+      maxWaitMillis : 100
+      testOnBorrow: false
+      testOnReturn: false
+
+apache:
+  rocketmq:
+    producer:
+      producerTopic: flink-searchTrend-source
+      producerGroup: flink
+      topicTags: text
+    nameServerAddr: 192.168.10.251:9876
+  kafka:
+    producer:
+      producerTopic: flink-searchTrend-source
+    serverAddr: 192.168.10.250:19092

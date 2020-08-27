@@ -1,0 +1,152 @@
+spring:
+  profiles:
+    active: test
+  devtools:
+    restart:
+      enabled: false
+  data:
+    redis:
+      repositories:
+        enabled: false
+  aop:
+    proxy-target-class: true
+    auto: true
+  datasource:
+    druid:
+      mktinfo:
+        url: jdbc:mysql://192.168.10.251:3306/mktinfo?characterEncoding=UTF-8&rewriteBatchedStatements=true&generateSimpleParameterMetadata=true
+        username: root
+        password: Kl2018@mysql01
+        driver-class-name: com.mysql.jdbc.Driver
+        initialSize: 20
+        maxActive: 100
+        maxWait: 10000
+        maxIdle: 20
+        minIdle: 10
+        removeAbandoned: true
+        removeAbandonedTimeout: 60
+        connectionProperties: clientEncoding=UTF-8
+        timeBetweenEvictionRunsMillis: 30000
+        minEvictableIdleTimeMillis: 60000
+        testWhileIdle: true
+        validationQuery: select 1
+      kamluen:
+        url: jdbc:mysql://192.168.10.251:3306/kamluen?characterEncoding=UTF-8&rewriteBatchedStatements=true&generateSimpleParameterMetadata=true
+        username: root
+        password: Kl2018@mysql01
+        driver-class-name: com.mysql.jdbc.Driver
+        initialSize: 20
+        maxActive: 100
+        maxWait: 10000
+        maxIdle: 20
+        minIdle: 10
+        removeAbandoned: true
+        removeAbandonedTimeout: 60
+        connectionProperties: clientEncoding=UTF-8
+        timeBetweenEvictionRunsMillis: 30000
+        minEvictableIdleTimeMillis: 60000
+        testWhileIdle: true
+        validationQuery: select 1
+      strategy:
+        url: jdbc:mysql://192.168.10.251:3306/strategy?characterEncoding=UTF-8&rewriteBatchedStatements=true&generateSimpleParameterMetadata=true
+        username: root
+        password: Kl2018@mysql01
+        driver-class-name: com.mysql.jdbc.Driver
+        initialSize: 20
+        maxActive: 100
+        maxWait: 10000
+        maxIdle: 20
+        minIdle: 10
+        removeAbandoned: true
+        removeAbandonedTimeout: 60
+        connectionProperties: clientEncoding=UTF-8
+        timeBetweenEvictionRunsMillis: 30000
+        minEvictableIdleTimeMillis: 60000
+        testWhileIdle: true
+        validationQuery: select 1
+
+  session:
+    store-type: none
+
+mybatis-plus:
+  mapper-locations: classpath*:com/kamluen/elasticsearch/dao/mapper/*.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: com.kamluen.elasticsearch.entity
+  # plugins
+
+  global-config:
+    #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
+    id-type: 2
+    db-type: mysql
+    #字段策略 0:"忽略判断",1:"非 NULL 判断"),2:"非空判断"
+    field-strategy: 2
+    #驼峰下划线转换
+    db-column-underline: true
+    #刷新mapper 调试神器
+    refresh-mapper: true
+    #数据库大写下划线转换
+    #capital-mode: true
+    #序列接口实现类配置
+    #key-generator: com.baomidou.springboot.xxx
+    #逻辑删除配置（下面3个配置）
+    #    logic-delete-value: 0
+    #    logic-not-delete-value: 1
+    #    sql-injector: com.baomidou.mybatisplus.mapper.LogicSqlInjector
+    #自定义填充策略接口实现
+#    meta-object-handler: com.kamluen.elasticsearch.common.MyMetaObjectHandler
+    #自定义SQL注入器
+    #sql-injector: com.baomidou.springboot.xxx
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+
+mybatis:
+  configuration:
+    cache-enabled: true
+    lazy-loading-enabled: true
+    multiple-result-sets-enabled: true
+    use-column-label: true
+    default-executor-type: reuse
+    default-statement-timeout: 25000
+  type-aliases-package: com.kamluen.elasticsearch.entity
+  mapper-locations: classpath*:com/kamluen/elasticsearch/dao/mapper/*.xml
+
+xxl:
+  job:
+    # 访问令牌[选填]，非空则进行匹配校验
+    accessToken: ''
+    admin:
+      # 执行器注册中心地址[选填]，为空则关闭自动注册
+      addresses: http://${base-url}:7889
+    executor:
+      # 执行器AppName[选填]，为空则关闭自动注册
+      appname: xxl-job-executor-elasticsearch
+      # 执行器IP[选填]，为空则自动获取
+      ip: ${base-url}
+      # 执行器日志路径[选填]，为空则使用默认路径
+      logpath: /home/logs/app/elasticsearch/xxjob/logs
+      # 日志保存天数[选填]，值大于3时生效
+      logretentiondays: -1
+      # 执行器端口号[选填]，为空则自动获取
+      port: 8994
+
+# 服务启动访问端口
+server:
+  port: 6688
+
+
+oss:
+  prefix: https://oss.kamluen.com
+  #用于判断错误数据
+  wrong:
+    data: -hangzhou.aliyuncs.com/APP/UPLOAD/HEAD_PICTURE
+  user:
+    suffix: /APP/UPLOAD/HEAD_PICTURE
+  dynamic:
+    suffix: /APP/UPLOAD/FRIEND_COMMUNITY
+  #251环境默认头像路径
+  default:
+    image: https://kamluen.oss-cn-hangzhou.aliyuncs.com/template/user_open/head_default/d4d54b217cff44b3bea6ec28fb2943a6_64_64.png
+  #生产环境默认头像路径
+#  default:
+#      image: https://kloss.kamluen.com/template/user_open/head_default/d4d54b217cff44b3bea6ec28fb2943a6_64_64.png

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kamluen.elasticsearch.dao.kamluen.PtfNoteInteractionDao">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.kamluen.elasticsearch.entity.PtfNoteInteraction">
+        <id column="inter_id" property="interId" />
+        <result column="client_req_id" property="clientReqId" />
+        <result column="ptf_note_id" property="ptfNoteId" />
+        <result column="inter_type" property="interType" />
+        <result column="from_user" property="fromUser" />
+        <result column="to_user" property="toUser" />
+        <result column="content" property="content" />
+        <result column="is_comment" property="isComment" />
+        <result column="parent_inter_id" property="parentInterId" />
+        <result column="is_status" property="isStatus" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="note_user" property="noteUser" />
+        <result column="at_ids" property="atIds" />
+    </resultMap>
+
+</mapper>

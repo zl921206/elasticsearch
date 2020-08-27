@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kamluen.elasticsearch.dao.strategy.StrategyIncomeDao">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.kamluen.elasticsearch.entity.StrategyIncome">
+        <id column="income_id" property="incomeId"/>
+        <result column="strategy_id" property="strategyId"/>
+        <result column="income_type" property="incomeType"/>
+        <result column="accumulate_income" property="accumulateIncome"/>
+        <result column="day_income" property="dayIncome"/>
+        <result column="hold_posi" property="holdPosi"/>
+        <result column="surplus_funds" property="surplusFunds"/>
+        <result column="date" property="date"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+    <sql id="Overall_column">
+		income_id,strategy_id,income_type,accumulate_income,day_income,hold_posi,surplus_funds,date,create_time
+	</sql>
+</mapper>
