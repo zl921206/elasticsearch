@@ -1,54 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<parent>
-        <groupId>com.bigdata</groupId>
-        <artifactId>bigdata</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-    </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>kamluen-elasticsearch</artifactId>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.8.RELEASE</version>
+    </parent>
+
+    <groupId>com.bigdata</groupId>
+    <artifactId>elasticsearch</artifactId>
+    <version>SNAPSHOT</version>
     <packaging>pom</packaging>
+
     <modules>
-        <module>kamluen-elasticsearch-api</module>
-        <module>kamluen-elasticsearch-core</module>
+        <module>elasticsearch-api</module>
+        <module>elasticsearch-core</module>
     </modules>
-    <repositories>
-        <repository>
-            <id>Public Group</id>
-            <name>Team Nexus Repository</name>
-            <url>http://192.168.10.251:8081/repository/maven-public/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>Public Group</id>
-            <name>Team Nexus Repository</name>
-            <url>http://192.168.10.251:8081/repository/maven-public/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>
-    <distributionManagement>
-        <repository>
-            <id>releases</id>
-            <name>Nexus releases Repository</name>
-            <url>http://192.168.10.251:8081/repository/maven-releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>snapshots</id>
-            <name>Nexus snapshots Repository</name>
-            <url>http://192.168.10.251:8081/repository/maven-snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <java.version>1.8</java.version>
+        <elasticsearch.version>7.9.0</elasticsearch.version>
+        <fastjson.version>1.2.73</fastjson.version>
+        <log4j.version>1.7.2</log4j.version>
+        <sling.version>0.0.2</sling.version>
+        <pinyin4j.version>2.5.0</pinyin4j.version>
+        <javassist.version>3.25.0-GA</javassist.version>
+    </properties>
+
+    <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
+    </dependencies>
+
 </project>
